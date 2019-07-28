@@ -17,7 +17,6 @@ class App {
     public function __construct()
     {
         $this->redisClient = new Client(Utils::getConfig('redis'));
-        // $this->redisClient = new Client(getenv('OPENREDIS_URL'));
         
         $this->listenerChannel = Utils::getConfig('channel_pubsub');
     }
