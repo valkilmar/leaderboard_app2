@@ -25,8 +25,14 @@ class Logger {
     
     public static function log($message, $level = self::LEVEL_INFO)
     {
+        
         $path = self::getPath();
         @touch($path);
+        
+        // Added as heroku doen't provide write permissions to app's folders
+        if (!is_writable($path)) {
+            return false;
+        }
         
         if (is_array($message) || is_object($message)) {
             $message = json_encode($message);
