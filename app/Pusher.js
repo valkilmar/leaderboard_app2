@@ -30,8 +30,6 @@ class Pusher {
         // Initialize the io
         this.io = socketIO(this.server);
 
-        console.log('env port: ', process.env.PORT);
-
         this.connections = {};
 
         this.io.on('connection', (socket) => {
