@@ -9,8 +9,8 @@ class Storage {
     {
         this.app = app;
         
-        let redisOptions = null;
-        // let redisOptions = process.env.REDIS_URL;
+        // let redisOptions = null;
+        let redisOptions = process.env.REDIS_URL;
         
 
         // Initialize redis client
