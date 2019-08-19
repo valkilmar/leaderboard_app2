@@ -29,7 +29,9 @@ class Pusher {
         .listen(PORT, () => console.log('Pusher listening on port: ' + PORT));
 
         // Initialize the io
-        this.io = socketIO(this.server);
+        this.io = socketIO(this.server, {
+            transports: ['websocket', 'polling']
+        });
 
         this.connections = {};
 
