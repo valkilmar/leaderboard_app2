@@ -20,7 +20,8 @@ class Pusher {
             return; // That means Pusher is already started.
         }
 
-        const PORT = Utils.getConfig('socket_port');
+        // const PORT = Utils.getConfig('socket_port');
+        const PORT = process.env.PORT;
 
         var appReference = this.app;
 
