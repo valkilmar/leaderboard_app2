@@ -22,10 +22,18 @@ class Pusher {
 
         // const PORT = Utils.getConfig('socket_port');
         const PORT = process.env.PORT;
+        const INDEX = path.join(__dirname, 'index.html');
 
         var appReference = this.app;
 
         this.server = express()
+        .use(function(req, res, next) {
+            res.header("Access-Control-Allow-Origin", "*");
+            res.header("Access-Control-Allow-Headers", "X-Requested-With");
+            res.header("Access-Control-Allow-Headers", "Content-Type");
+            res.header("Access-Control-Allow-Methods", "PUT, GET, POST, DELETE, OPTIONS");
+            next();
+        })
         .listen(PORT, () => console.log('Pusher listening on port: ' + PORT));
 
         // Initialize the io
