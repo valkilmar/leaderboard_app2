@@ -15,8 +15,9 @@ class Pusher {
     }
     
     start() {
-        
+
         const PORT = process.env.PORT || Utils.getConfig('socket_port');
+        const HOST = process.env.HOST || Utils.getConfig('socket_host');
 
         var appReference = this.app;
 
@@ -28,7 +29,7 @@ class Pusher {
             res.header("Access-Control-Allow-Methods", "PUT, GET, POST, DELETE, OPTIONS");
             next();
         })
-        .listen(PORT, () => console.log('Pusher listening on port: ' + PORT));
+        .listen(PORT, HOST, () => console.log('Pusher listening on: ' + HOST + ':' + PORT));
 
         // Initialize the io
         this.io = socketIO(this.server, {
