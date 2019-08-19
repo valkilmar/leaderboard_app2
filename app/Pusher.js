@@ -29,6 +29,8 @@ class Pusher {
             res.header("Access-Control-Allow-Methods", "PUT, GET, POST, DELETE, OPTIONS");
             next();
         })
+        .use(express.static( './public', { redirect : false }))
+        // .use(app.router)
         .listen(PORT, HOST, () => console.log('Pusher listening on: ' + HOST + ':' + PORT));
 
         // Initialize the io
