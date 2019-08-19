@@ -9,12 +9,13 @@ class Storage {
     {
         this.app = app;
         
-        // let redisOptions = null;
         let redisOptions = process.env.REDIS_URL;
+        if (!redisOptions) {
+            redisOptions = null;
+        }
         
-
         // Initialize redis client
-        if (redisOptions) {
+        if (redisOptions !== null) {
             this.client = redis.createClient(redisOptions);
             this.listener = redis.createClient(redisOptions);
         } else {

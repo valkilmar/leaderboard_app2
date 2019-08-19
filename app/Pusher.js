@@ -15,14 +15,8 @@ class Pusher {
     }
     
     start() {
-
-        if (this.io) {
-            return; // That means Pusher is already started.
-        }
-
-        // const PORT = Utils.getConfig('socket_port');
-        const PORT = process.env.PORT;
-        const INDEX = path.join(__dirname, 'index.html');
+        
+        const PORT = process.env.PORT || Utils.getConfig('socket_port');
 
         var appReference = this.app;
 
